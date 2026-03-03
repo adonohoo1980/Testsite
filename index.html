@@ -1,474 +1,181 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Donohoo &amp; Sons Insurance | Milwaukee, WI</title>
-  <meta name="description" content="Independent insurance agency in Milwaukee offering home, auto, umbrella, and business insurance. One agent. Total protection." />
-  <meta name="theme-color" content="#0B1B2B" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Insurance | Donohoo & Sons</title>
 
-  <!-- Social preview -->
-  <meta property="og:title" content="Donohoo &amp; Sons Insurance" />
-  <meta property="og:description" content="Independent insurance in Milwaukee: home, auto, umbrella, business. One agent. Total protection." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.donohooinsurance.com/" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:400,500,600&family=Playfair+Display:500,600,700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f6;
+  --navy: #0f1c3a;
+  --ink: #1a1a1a;
+  --muted: #6e6e73;
+  --line: rgba(0,0,0,.08);
+  --shadow: rgba(15, 28, 58, 0.05);
+}
 
-  <link rel="stylesheet" href="styles.css" />
+body { 
+  margin: 0; 
+  font-family: 'Inter', sans-serif; 
+  background: var(--bg); 
+  color: var(--ink);
+  opacity: 0; 
+  transition: opacity 0.6s ease; 
+}
+body.nav-open { overflow: hidden; }
+
+/* MASTER TOPBAR */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+  background: rgba(250, 249, 246, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+.nav { max-width: 1100px; margin: auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.logo-img { height: 26px; }
+
+/* REVEAL ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* HERO SECTION */
+.wrap { max-width: 1100px; margin: auto; padding: 80px 24px; }
+.hero { text-align: center; margin-bottom: 80px; }
+h1 { font-family: 'Playfair Display'; font-size: clamp(44px, 7vw, 72px); line-height: 1.05; margin-bottom: 10px; font-weight: 600; }
+.hero-accent { color: var(--muted); font-size: clamp(24px, 4vw, 32px); font-family: 'Playfair Display'; margin-bottom: 40px; display: block; font-style: italic; }
+.hero p { font-size: 20px; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+/* IMAGE BOX */
+.families-img {
+  width: 100%;
+  aspect-ratio: 16/7;
+  object-fit: cover;
+  border-radius: 40px;
+  margin-bottom: 80px;
+  box-shadow: 0 30px 60px var(--shadow);
+}
+
+/* CONTENT GRID */
+.grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: flex-start; margin-bottom: 100px; }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 50px;
+  border-radius: 40px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px var(--shadow);
+  border-color: transparent;
+}
+
+h2 { font-family: 'Playfair Display'; font-size: 36px; margin-bottom: 24px; color: var(--navy); }
+.desc { font-size: 18px; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+
+/* REFERRAL SECTION */
+.referral-section { 
+  text-align: center; 
+  background: var(--navy);
+  color: #fff;
+  padding: 100px 40px; 
+  border-radius: 50px;
+  margin-bottom: 60px;
+}
+.referral-section h2 { color: #fff; font-size: 42px; margin-bottom: 20px; }
+.referral-section p { color: rgba(255,255,255,0.7); max-width: 550px; margin: 0 auto 50px; font-size: 19px; line-height: 1.6; }
+
+/* CTA BUTTON */
+.cta-btn {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 45px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px rgba(15, 28, 58, 0.2);
+}
+.btn-light { background: #fff; color: var(--navy); }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero, .grid { text-align: center; }
+  .families-img { aspect-ratio: 4/3; }
+}
+</style>
 </head>
 
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">
-        <span class="pill">Milwaukee • Greendale • Greenfield</span>
-      </div>
-      <div class="topbar__right">
-        <a class="topbar__link" href="tel:+14145551234" aria-label="Call Donohoo and Sons">Call: (414) 555-1234</a>
-        <span class="dot">•</span>
-        <a class="topbar__link" href="#quote">Get a quote</a>
-      </div>
+
+<div class="topbar">
+  <div class="nav">
+    <a href="/"><img src="logo.png" class="logo-img" alt="Donohoo & Sons"></a>
+    </div>
+</div>
+
+<div class="wrap">
+  <header class="hero reveal">
+    <h1>Personal insurance.</h1>
+    <span class="hero-accent">Done correctly.</span>
+    <p>Straightforward advice for Wisconsin families who value their time and their assets.</p>
+  </header>
+
+  <div class="reveal">
+    <img src="personal.jpg" class="families-img" alt="Milwaukee Personal Insurance">
+  </div>
+
+  <div class="grid">
+    <div class="reveal">
+      <h2>Professional advice</h2>
+      <p class="desc">Most people only talk to their agent when they get a bill. I prefer a different way. I handle your coverage personally, ensuring your protection stays current as your life changes.</p>
+      <a href="/quote.html" class="cta-btn">Start a Conversation</a>
+    </div>
+    
+    <div class="card reveal" style="transition-delay: 0.1s;">
+      <h3 style="font-family: 'Playfair Display'; font-size: 26px; color: var(--navy); margin-top:0;">Policy Priorities</h3>
+      <ul style="color: var(--muted); line-height: 2.2; font-size: 17px; padding-left: 20px;">
+        <li><strong>Home & Dwelling</strong> — Replacement cost focus.</li>
+        <li><strong>Water & Sewer Backup</strong> — Basement protection.</li>
+        <li><strong>Personal Umbrella</strong> — Liability defense.</li>
+        <li><strong>Simplified Auto</strong> — Modern driver coverage.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Header / Nav -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a class="brand" href="/" aria-label="Donohoo & Sons Insurance">
-        <!-- Swap this for your SVG logo if you want -->
-        <div class="brand__mark" aria-hidden="true">D</div>
-        <div class="brand__text">
-          <div class="brand__name">Donohoo &amp; Sons</div>
-          <div class="brand__tag">Insurance</div>
-        </div>
-      </a>
+  <div class="referral-section reveal">
+    <h2>Sent by a friend?</h2>
+    <p>Most of my business comes from personal introductions. Let’s start with a quick chat to see if my approach is the right fit.</p>
+    <a href="/quote.html" class="cta-btn btn-light">Connect with Andy</a>
+  </div>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#why">Why us</a>
-        <a href="#services">Coverages</a>
-        <a href="#process">How it works</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn--small btn--ghost" href="#quote">Get a quote</a>
-      </nav>
-
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobileMenu" id="mobileMenu" hidden>
-      <div class="container mobileMenu__inner">
-        <a href="#why">Why us</a>
-        <a href="#services">Coverages</a>
-        <a href="#process">How it works</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn--full" href="#quote">Get a quote</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="eyebrow">Independent insurance agency • Wisconsin</p>
-          <h1>
-            Insurance that’s
-            <span class="accent">actually</span>
-            done right.
-          </h1>
-
-          <p class="lead">
-            Home, auto, umbrella, and business coverage — with a real agent who answers the phone.
-            We shop multiple carriers to find the right fit, then stay in your corner when you need us.
-          </p>
-
-          <div class="hero__cta">
-            <a class="btn" href="#quote">Start a quote</a>
-            <a class="btn btn--ghost" href="#services">Explore coverages</a>
-          </div>
-
-          <div class="trustRow" role="list" aria-label="Trust indicators">
-            <div class="trustItem" role="listitem">
-              <div class="trustIcon" aria-hidden="true">★</div>
-              <div>
-                <div class="trustTitle">Local, independent</div>
-                <div class="trustText">Milwaukee-area agent</div>
-              </div>
-            </div>
-            <div class="trustItem" role="listitem">
-              <div class="trustIcon" aria-hidden="true">☎</div>
-              <div>
-                <div class="trustTitle">Real help</div>
-                <div class="trustText">No call-center runaround</div>
-              </div>
-            </div>
-            <div class="trustItem" role="listitem">
-              <div class="trustIcon" aria-hidden="true">⚡</div>
-              <div>
-                <div class="trustTitle">Fast switching</div>
-                <div class="trustText">E-sign + easy setup</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__card">
-          <div class="card card--glass">
-            <div class="card__header">
-              <h2 class="card__title">Get a quick estimate</h2>
-              <p class="card__sub">Takes about 60 seconds. No spam.</p>
-            </div>
-
-            <!-- You can wire this to an embedded form later (Typeform/Jotform/AgencyZoom/etc.) -->
-            <form class="form" id="quickForm">
-              <div class="form__row">
-                <label>
-                  Full name
-                  <input name="name" autocomplete="name" required placeholder="Andrew Donohoo" />
-                </label>
-              </div>
-
-              <div class="form__row form__row--two">
-                <label>
-                  Email
-                  <input name="email" type="email" autocomplete="email" required placeholder="you@email.com" />
-                </label>
-                <label>
-                  Phone
-                  <input name="phone" type="tel" autocomplete="tel" placeholder="(414) 555-1234" />
-                </label>
-              </div>
-
-              <div class="form__row">
-                <label>
-                  What do you need?
-                  <select name="need" required>
-                    <option value="" selected disabled>Select one</option>
-                    <option>Auto</option>
-                    <option>Home</option>
-                    <option>Auto + Home Bundle</option>
-                    <option>Renters</option>
-                    <option>Umbrella</option>
-                    <option>Business</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="form__row">
-                <label>
-                  Notes (optional)
-                  <textarea name="notes" rows="3" placeholder="Current carrier, renewal date, anything you want me to know…"></textarea>
-                </label>
-              </div>
-
-              <button class="btn btn--full" type="submit">Send request</button>
-
-              <p class="fineprint">
-                Prefer a quick call? <a href="tel:+14145551234">Call (414) 555-1234</a>.
-              </p>
-            </form>
-          </div>
-
-          <div class="miniBadges" aria-label="Carrier shopping message">
-            <div class="miniBadge">We compare multiple carriers</div>
-            <div class="miniBadge">No obligation</div>
-            <div class="miniBadge">Clear coverage walkthrough</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__bg" aria-hidden="true">
-        <div class="blob blob--1"></div>
-        <div class="blob blob--2"></div>
-      </div>
-    </section>
-
-    <!-- Why -->
-    <section class="section" id="why">
-      <div class="container">
-        <div class="section__head">
-          <h2>Why people switch to an independent agent</h2>
-          <p>
-            You get options, clear advice, and someone who will still pick up the phone after the sale.
-          </p>
-        </div>
-
-        <div class="grid3">
-          <div class="feature">
-            <h3>We shop the market</h3>
-            <p>Instead of one company’s price, you get choices across strong carriers.</p>
-          </div>
-          <div class="feature">
-            <h3>Coverage that makes sense</h3>
-            <p>No surprises — we’ll walk through what’s covered, what isn’t, and what matters most.</p>
-          </div>
-          <div class="feature">
-            <h3>Advocacy on claims</h3>
-            <p>If there’s a claim, you’re not alone. We help you navigate the process and push for fair outcomes.</p>
-          </div>
-        </div>
-
-        <div class="banner">
-          <div class="banner__content">
-            <h3>One agent • Total protection</h3>
-            <p>Home + Auto + Umbrella + Business — built as a plan, not a pile of policies.</p>
-          </div>
-          <a class="btn btn--ghost" href="#quote">Get started</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="section section--alt" id="services">
-      <div class="container">
-        <div class="section__head">
-          <h2>Coverages</h2>
-          <p>Personal and business insurance — matched to your real life, not a generic checklist.</p>
-        </div>
-
-        <div class="grid4">
-          <a class="service" href="#quote">
-            <div class="service__icon" aria-hidden="true">🚗</div>
-            <h3>Auto</h3>
-            <p>Liability, comp/collision, UM/UIM, rental, glass, and more.</p>
-            <span class="service__link">Get an auto quote →</span>
-          </a>
-
-          <a class="service" href="#quote">
-            <div class="service__icon" aria-hidden="true">🏠</div>
-            <h3>Home</h3>
-            <p>Replace cost, water backup, service line, endorsements that matter.</p>
-            <span class="service__link">Get a home quote →</span>
-          </a>
-
-          <a class="service" href="#quote">
-            <div class="service__icon" aria-hidden="true">☂</div>
-            <h3>Umbrella</h3>
-            <p>Extra liability protection when life gets messy.</p>
-            <span class="service__link">Ask about umbrella →</span>
-          </a>
-
-          <a class="service" href="#quote">
-            <div class="service__icon" aria-hidden="true">🏢</div>
-            <h3>Business</h3>
-            <p>GL, property, WC, auto, inland marine, umbrellas — packaged right.</p>
-            <span class="service__link">Get a business quote →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section__head">
-          <h2>How it works</h2>
-          <p>Simple process. Clear communication. No runaround.</p>
-        </div>
-
-        <ol class="steps">
-          <li class="step">
-            <div class="step__num">1</div>
-            <div class="step__body">
-              <h3>Tell us what you’ve got</h3>
-              <p>Send your declarations page or basic info — we’ll do the heavy lifting.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step__num">2</div>
-            <div class="step__body">
-              <h3>We build options</h3>
-              <p>We compare carriers and create 2–3 clear paths (not 15 confusing PDFs).</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step__num">3</div>
-            <div class="step__body">
-              <h3>Quick walkthrough</h3>
-              <p>We’ll review coverages together so you know exactly what you’re buying.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="step__num">4</div>
-            <div class="step__body">
-              <h3>Switching is easy</h3>
-              <p>Everything is electronic — e-sign, simple effective date, we help with the rest.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="section section--alt" id="reviews">
-      <div class="container">
-        <div class="section__head">
-          <h2>What clients say</h2>
-          <p>Replace these with real Google reviews when you’re ready.</p>
-        </div>
-
-        <div class="grid3">
-          <figure class="quote">
-            <blockquote>
-              “Andy explained everything in plain English and found us better coverage without the hassle.”
-            </blockquote>
-            <figcaption>— Local client, Milwaukee</figcaption>
-          </figure>
-
-          <figure class="quote">
-            <blockquote>
-              “Switching was fast. The coverage review was the part I didn’t know I needed.”
-            </blockquote>
-            <figcaption>— Home &amp; Auto customer</figcaption>
-          </figure>
-
-          <figure class="quote">
-            <blockquote>
-              “When a claim happened, having a real advocate was huge. That’s the difference.”
-            </blockquote>
-            <figcaption>— Business owner</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section__head">
-          <h2>FAQ</h2>
-          <p>Quick answers to the stuff everyone asks.</p>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Do you charge a fee?</summary>
-            <div class="faq__body">
-              <p>No. We’re paid by the carrier if you place coverage. Quotes are always free.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Can you match my current coverages?</summary>
-            <div class="faq__body">
-              <p>Yes — and we’ll also show a “better protection” option so you can compare.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>How hard is it to switch?</summary>
-            <div class="faq__body">
-              <p>Easy. We set an effective date, handle electronic signatures, and help coordinate cancellation if needed.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Do you only work with one insurance company?</summary>
-            <div class="faq__body">
-              <p>No — we’re independent, so we can shop multiple carriers based on your needs.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quote -->
-    <section class="section section--alt" id="quote">
-      <div class="container">
-        <div class="ctaCard">
-          <div class="ctaCard__content">
-            <h2>Ready for a clean quote and a clear answer?</h2>
-            <p>
-              Send the basics and we’ll come back with 2–3 solid options.
-              Then we’ll do a quick coverage walkthrough so there are no surprises.
-            </p>
-
-            <div class="ctaCard__actions">
-              <a class="btn" href="mailto:quotes@donohooinsurance.com?subject=Quote%20Request%20-%20Donohoo%20%26%20Sons&amp;body=Name%3A%0APhone%3A%0AEmail%3A%0AWhat%20I%20need%3A%0ACurrent%20carrier%3A%0ARenewal%20date%3A%0ANotes%3A">
-                Email for a quote
-              </a>
-              <a class="btn btn--ghost" href="tel:+14145551234">Call (414) 555-1234</a>
-            </div>
-
-            <p class="fineprint">
-              Tip: If you email your declarations page(s), quoting goes faster.
-            </p>
-          </div>
-
-          <div class="ctaCard__aside">
-            <div class="asideBox">
-              <h3>What to send</h3>
-              <ul>
-                <li>Current dec page(s) (auto/home)</li>
-                <li>Drivers + vehicles</li>
-                <li>Address + year built</li>
-                <li>Any recent claims</li>
-              </ul>
-            </div>
-
-            <div class="asideBox">
-              <h3>Office</h3>
-              <p class="muted">Milwaukee, WI</p>
-              <p class="muted">Mon–Fri • 9–5 (and flexible)</p>
-              <p class="muted">Claims help anytime</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div>
-        <div class="footer__brand">
-          <div class="brand__mark" aria-hidden="true">D</div>
-          <div>
-            <div class="footer__name">Donohoo &amp; Sons Insurance</div>
-            <div class="footer__tag">One agent • Total protection</div>
-          </div>
-        </div>
-
-        <p class="footer__text">
-          Independent insurance agency serving Milwaukee and surrounding communities.
-        </p>
-      </div>
-
-      <div class="footer__col">
-        <div class="footer__head">Contact</div>
-        <a href="tel:+14145551234">(414) 555-1234</a>
-        <a href="mailto:quotes@donohooinsurance.com">quotes@donohooinsurance.com</a>
-        <a href="#quote">Get a quote</a>
-      </div>
-
-      <div class="footer__col">
-        <div class="footer__head">Explore</div>
-        <a href="#services">Coverages</a>
-        <a href="#process">How it works</a>
-        <a href="#faq">FAQ</a>
-      </div>
-
-      <div class="footer__col">
-        <div class="footer__head">Legal</div>
-        <a href="#" onclick="return false;">Privacy</a>
-        <a href="#" onclick="return false;">Licensing</a>
-        <p class="footer__fine">© <span id="year"></span> Donohoo &amp; Sons Insurance</p>
-      </div>
-    </div>
+  <footer style="text-align: center; color: var(--muted); font-size: 13px;">
+    &copy; 2026 Donohoo & Sons Insurance
   </footer>
+</div>
 
-  <script src="script.js" defer></script>
+<script>
+window.addEventListener('load', () => { document.body.style.opacity = '1'; });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
